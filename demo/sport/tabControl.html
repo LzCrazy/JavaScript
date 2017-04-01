@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab Controll</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+        #tab {
+            width: 600px;
+            height: 500px;
+            border: 5px solid yellow;
+            margin: 0 auto;
+            position: relative;
+        }
+        #tab ul li {
+            list-style: none;
+            float: left;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        #tab .con {
+            width: 580px;
+            height: 420px;
+            position: absolute;
+            left: 10px;
+            top:60px;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var Otab = document.getElementById("tab");
+            var Oli = document.getElementsByTagName("li");
+            var Ocon = document.getElementsByClassName('con');
+
+            for(var i=0;i<Oli.length;i++) {
+                Oli[i].order_no=i;
+                Oli[i].onmousemove=function () {
+                    for(var i=0;i<Ocon.length;i++) {
+                        Ocon[i].style.display = 'none';
+                    }
+                    Ocon[this.order_no].style.display = "block";
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="tab">
+    <div class="con" style="background: greenyellow; display: block;" >你的内容</div>
+    <div class="con" style="background: coral;">我的内容</div>
+    <div class="con" style="background: lemonchiffon;">他的内容</div>
+    <ul>
+        <li style="background: greenyellow;">你</li>
+        <li style="background: coral;"> 我</li>
+        <li style="background: lemonchiffon;">他</li>
+    </ul>
+</div>
+</body>
+</html>
