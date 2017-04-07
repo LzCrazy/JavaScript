@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+    <script>
+       var cities=[
+               [],
+               [{"name":'东城区',"value":101},
+               {"name":'西城区',"value":102},
+               {"name":'南城区',"value":103},
+               {"name":'北城区',"value":104}],
+
+               [{"name":'河东区',"value":201},
+               {"name":'河西区',"value":202},
+               {"name":'南开区',"value":203}],
+
+               [{"name":'石家庄市',"value":301},
+               {"name":'廊坊市',"value":302},
+               {"name":'保定市',"value":303},
+               {"name":'秦皇岛市',"value":304}]
+
+       ];
+    </script>
+</head>
+<body>
+    <select name="provs" id="selProvs" onchange="selCts(this)">
+        <option value="">-请选择-</option>
+        <option value="">北京市</option>
+        <option value="">天津市</option>
+        <option value="">河北市</option>
+    </select>
+    <select name="cities" class="hide"></select>
+    <script>
+        function selCts(selPros) {
+            var i = selPros.selectedIndex;
+            var cts = cities[i];
+            var selCts = document.querySelector("[name=cities]");
+            if(cts.length==0) {
+                selCts.className = "hide";
+            }else {
+                selCts.length=0;
+                var frag=document.createDocumentFragment();
+                var opt = new Option("-请选择-");
+                frag.appendChild(opt);
+                for(var i=0;i<cts.length;i++) {
+                    var opt = new Option(cts[i].name, cts[i].value);
+                    frag.appendChild(opt);
+                }
+                selCts.appendChild(frag);
+                selCts.className = "";
+            }
+
+        }
+    </script>
+</body>
+</html>
